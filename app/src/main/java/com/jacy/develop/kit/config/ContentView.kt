@@ -1,4 +1,4 @@
-package com.jwell56.usteel.annotation
+package com.jacy.develop.kit.config
 
 import java.lang.annotation.Inherited
 

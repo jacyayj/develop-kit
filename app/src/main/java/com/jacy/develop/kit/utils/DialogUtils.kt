@@ -1,4 +1,4 @@
-package com.jwell56.usteel.utils
+package com.jacy.develop.kit.utils
 
 import android.view.Gravity
 import android.view.Window

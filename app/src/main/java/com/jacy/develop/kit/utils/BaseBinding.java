@@ -3,7 +3,7 @@ package com.jacy.develop.kit.utils;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
-public class ImageBinding {
+public class BaseBinding {
 
     @BindingAdapter({"resId"})
     public static void displayResource(ImageView view, int resId) {

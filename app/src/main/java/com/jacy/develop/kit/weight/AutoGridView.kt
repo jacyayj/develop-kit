@@ -1,4 +1,4 @@
-package com.jwell56.usteel.widget
+package com.jacy.develop.kit.weight
 
 import android.content.Context
 import android.util.AttributeSet

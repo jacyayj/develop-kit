@@ -13,18 +13,18 @@ class KeyboardLayout : LinearLayout {
     private var mHasInit: Boolean = false
     private var mHasKeybord: Boolean = false
     private var mHeight: Int = 0
-    private var mListener: onKybdsChangeListener? = null
+    private var mListener: onKeyboardChangeListener? = null
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {}
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     /**
      * 设置键盘状态监听器
      */
-    fun setOnkbdStateListener(listener: onKybdsChangeListener) {
+    fun setOnkbdStateListener(listener: onKeyboardChangeListener) {
         mListener = listener
     }
 
@@ -55,14 +55,14 @@ class KeyboardLayout : LinearLayout {
         }
     }
 
-    interface onKybdsChangeListener {
+    interface onKeyboardChangeListener {
         fun onKeyBoardStateChange(state: Int)
     }
 
     companion object {
         private val TAG = KeyboardLayout::class.java.simpleName
-        val KEYBOARD_STATE_SHOW = -3//软键盘弹起
-        val KEYBOARD_STATE_HIDE = -2//软键盘隐藏
-        val KEYBOARD_STATE_INIT = -1//初始
+        const val KEYBOARD_STATE_SHOW = -3//软键盘弹起
+        const val KEYBOARD_STATE_HIDE = -2//软键盘隐藏
+        const val KEYBOARD_STATE_INIT = -1//初始
     }
 }

@@ -1,4 +1,4 @@
-package com.jwell56.usteel.config
+package com.jacy.develop.kit.config
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -148,57 +148,6 @@ fun String.isZero(): Boolean {
         true
     else
         this == "0"
-}
-
-/**
- * 功能：判断字符串是否为数字
- *
- * @param str
- * @return
- */
-fun String.isNumeric(): Boolean {
-    if (!isNullOrEmpty()) {
-        val pattern = Pattern.compile("[0-9]*")
-        val isNum = pattern.matcher(this)
-        if (isNum.matches()) {
-            return true
-        }
-    }
-    return false
-}
-
-/**
- * 判断字符串是否是合法的手机号
- *
- * @param telStr
- * @return
- */
-fun String.isTel(): Boolean {
-    if (isNotEmpty()) {
-        if (length == 11) {
-            val p = Pattern.compile("^[1][345789]\\d{9}$")
-            if (p != null) {
-                val matcher = p.matcher(this)
-                if (matcher.find()) {
-                    return true
-                }
-            }
-        }
-    }
-    return false
-}
-
-/**
- * 格式化手机号
- *
- * @param telStr
- * @return
- */
-fun String.formatToTel(): String {
-    return if (isTel()) {
-        StringBuffer(this).insert(3, "-").insert(8, "-").toString()
-    } else
-        this
 }
 
 private var toastor: Toast? = null

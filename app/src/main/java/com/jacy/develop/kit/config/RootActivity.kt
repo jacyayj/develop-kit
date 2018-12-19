@@ -3,19 +3,22 @@ package com.jacy.develop.kit.config
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.gc.materialdesign.widgets.ProgressDialog
 import com.vondear.rxtool.RxActivityTool
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.ProgressDialogCallBack
 import com.zhouyou.http.exception.ApiException
+import com.zhouyou.http.model.ApiResult
+import com.zhouyou.http.model.HttpParams
 import com.zhouyou.http.subsciber.IProgressDialog
 
 /**
- * Created by jacy on 2018/7/24.
+ * Created by jacy on 2018/12/19.
  * 根activity，初始化各种通用数据；
  */
-abstract class HttpActivity<T> : AppCompatActivity() {
+abstract class RootActivity<T : ApiResult<*>> : AppCompatActivity() {
 
-    var loadingProgress: IProgressDialog? = null
+    private val loadingProgress: IProgressDialog by lazy { IProgressDialog { initProgress() } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +27,6 @@ abstract class HttpActivity<T> : AppCompatActivity() {
         initData()
         initListener()
         RxActivityTool.addActivity(this)
-    }
-
-    override fun onDestroy() {
-        RxActivityTool.getActivityStack().remove(this)
-        super.onDestroy()
     }
 
     /**
@@ -43,19 +41,42 @@ abstract class HttpActivity<T> : AppCompatActivity() {
         }
     }
 
-    internal fun post(url: String) {
+    internal fun post(
+        url: String,
+        params: HttpParams,
+        success: (result: T) -> Unit = {},
+        error: (msg: String) -> Unit = { toast(it) },
+        showProgress: Boolean = true
+    ) {
         EasyHttp.post(url)
-            .execute(object : ProgressDialogCallBack<T>(loadingProgress, true, true) {
-                override fun onSuccess(p0: T?) {
-
+            .params(params)
+            .execute(object : ProgressDialogCallBack<T>(loadingProgress, showProgress, true) {
+                override fun onSuccess(result: T?) {
+                    result?.let {
+                        if (it.isOk) {
+                            success(it)
+                            this@RootActivity.onSuccess(it)
+                        } else {
+                            error(it.msg)
+                            this@RootActivity.onError(it.msg)
+                        }
+                    }
                 }
 
                 override fun onError(e: ApiException?) {
                     super.onError(e)
-                    toast(e?.message)
+                    error(e?.message ?: e?.displayMessage ?: "${e?.code}")
+                    this@RootActivity.onError(e?.message ?: e?.displayMessage ?: "${e?.code}")
+                }
+
+                override fun onCompleted() {
+                    super.onCompleted()
+                    onFinish()
                 }
             })
     }
+
+    abstract fun initProgress(): ProgressDialog
 
     /**
      * 初始化数据
@@ -63,9 +84,19 @@ abstract class HttpActivity<T> : AppCompatActivity() {
     open fun initData() {}
 
     /**
-     * 获取数据
+     * 请求成功
      */
-    open fun fetchData() {}
+    open fun onSuccess(result: T) {}
+
+    /**
+     * 请求失败
+     */
+    open fun onError(msg: String) {}
+
+    /**
+     * 请求结束
+     */
+    open fun onFinish() {}
 
     /**
      * 初始化监听器
@@ -76,6 +107,11 @@ abstract class HttpActivity<T> : AppCompatActivity() {
      * 初始化databinding
      */
     open fun initDatabinding() {}
+
+    override fun onDestroy() {
+        RxActivityTool.getActivityStack().remove(this)
+        super.onDestroy()
+    }
 
     open fun back(view: View) {
         onBackPressed()
