@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.config
+package com.jacy.kit.config
 
 import android.app.Application
 import com.vondear.rxtool.RxTool

@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.config
+package com.jacy.kit.config
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -12,7 +12,6 @@ import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import com.vondear.rxtool.RxTool
-import java.util.regex.Pattern
 
 /**
  * Created by Administrator on 2018/3/19.

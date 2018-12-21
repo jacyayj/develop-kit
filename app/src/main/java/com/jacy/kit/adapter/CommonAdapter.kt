@@ -1,6 +1,5 @@
-package com.jacy.develop.kit.adapter
+package com.jacy.kit.adapter
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.view.LayoutInflater

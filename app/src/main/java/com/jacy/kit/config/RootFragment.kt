@@ -1,11 +1,11 @@
-package com.jacy.develop.kit.config
+package com.jacy.kit.config
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gc.materialdesign.widgets.ProgressDialog
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.ProgressDialogCallBack
 import com.zhouyou.http.exception.ApiException

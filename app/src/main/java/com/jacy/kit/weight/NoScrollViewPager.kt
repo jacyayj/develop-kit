@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.weight
+package com.jacy.kit.weight
 
 import android.content.Context
 import android.support.v4.view.ViewPager
@@ -12,11 +12,9 @@ import android.view.MotionEvent
 class NoScrollViewPager : ViewPager {
 
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-
-    }
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         return false

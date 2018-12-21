@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.config
+package com.jacy.kit.config
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding

@@ -1,5 +1,4 @@
-
-package com.jacy.develop.kit.adapter
+package com.jacy.kit.adapter
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding

@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.utils
+package com.jacy.kit.utils
 
 import com.google.gson.GsonBuilder
 import com.vondear.rxtool.RxLogTool

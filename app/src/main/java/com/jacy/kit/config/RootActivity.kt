@@ -1,9 +1,9 @@
-package com.jacy.develop.kit.config
+package com.jacy.kit.config
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.gc.materialdesign.widgets.ProgressDialog
 import com.vondear.rxtool.RxActivityTool
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.ProgressDialogCallBack

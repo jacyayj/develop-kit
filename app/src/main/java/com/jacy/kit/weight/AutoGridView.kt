@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.weight
+package com.jacy.kit.weight
 
 import android.content.Context
 import android.util.AttributeSet

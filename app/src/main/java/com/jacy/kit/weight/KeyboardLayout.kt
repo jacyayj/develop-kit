@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.weight
+package com.jacy.kit.weight
 
 /**
  * 介绍：这个是自定义的布局，自定义布局可以继承各种常见布局。自定义布局有键盘状态改变监听器，可以通过注册监听器来监听软键盘状态。

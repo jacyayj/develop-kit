@@ -1,12 +1,12 @@
-package com.jacy.develop.kit.weight
+package com.jacy.kit.weight
 
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
-import com.gc.materialdesign.utils.Utils
 import com.jacy.develop.kit.R
-import com.jacy.develop.kit.config.mgetColor
+import com.jacy.kit.config.mgetColor
+import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
 import com.yanzhenjie.recyclerview.swipe.widget.DefaultItemDecoration
 
@@ -24,7 +24,7 @@ open class CommonRecyclerView : SwipeMenuRecyclerView {
             DefaultItemDecoration(
                 context.mgetColor(dividerColor),
                 0,
-                Utils.dpToPx(dividerSize, resources)
+                DensityUtil.dp2px(dividerSize)
             )
         )
     }
@@ -34,7 +34,7 @@ open class CommonRecyclerView : SwipeMenuRecyclerView {
         addItemDecoration(
             DefaultItemDecoration(
                 context.mgetColor(dividerColor),
-                Utils.dpToPx(dividerSize, resources),
+                DensityUtil.dp2px(dividerSize),
                 0
             )
         )
@@ -45,8 +45,8 @@ open class CommonRecyclerView : SwipeMenuRecyclerView {
         addItemDecoration(
             DefaultItemDecoration(
                 context.mgetColor(dividerColor),
-                Utils.dpToPx(dividerSize, resources),
-                Utils.dpToPx(dividerSize, resources)
+                DensityUtil.dp2px(dividerSize),
+                DensityUtil.dp2px(dividerSize)
             )
         )
     }

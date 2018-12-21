@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.utils
+package com.jacy.kit.utils
 
 import android.view.Gravity
 import android.view.Window
