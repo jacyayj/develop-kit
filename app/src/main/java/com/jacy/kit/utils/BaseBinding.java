@@ -1,4 +1,4 @@
-package com.jacy.develop.kit.utils;
+package com.jacy.kit.utils;
 
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;

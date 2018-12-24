@@ -29,6 +29,7 @@ fun Context.mgetDrawable(id: Int): Drawable = resources.getDrawable(id)
 fun Context.mgetDimension(id: Int): Int = resources.getDimensionPixelSize(id)
 
 fun Fragment.getIntArray(id: Int) = resources.getIntArray(id)
+
 fun Fragment.getStringArray(id: Int) = resources.getStringArray(id)
 
 fun View.gone() {

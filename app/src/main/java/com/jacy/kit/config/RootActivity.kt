@@ -81,12 +81,16 @@ abstract class RootActivity<T : ApiResult<*>> : AppCompatActivity() {
     /**
      * 初始化数据
      */
-    open fun initData() {}
+    open fun initData() {
+        TODO("进行数据的初始化")
+    }
 
     /**
      * 请求成功
      */
-    open fun onSuccess(result: T) {}
+    open fun onSuccess(result: T) {
+
+    }
 
     /**
      * 请求失败
