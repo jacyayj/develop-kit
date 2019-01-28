@@ -6,7 +6,7 @@ import java.lang.reflect.ParameterizedType
 import com.jacy.develop.kit.BR
 import com.zhouyou.http.model.ApiResult
 
-abstract class RootDataBindingActivity<T, A : ApiResult<*>> : RootActivity<A>() {
+abstract class RootDataBindingActivity<T> : RootActivity() {
 
     open val model: T by lazy { getClassInstance().newInstance() }
     private val binding by lazy { DataBindingUtil.setContentView<ViewDataBinding>(this, getLayoutId()) }

@@ -13,7 +13,7 @@ import com.zhouyou.http.model.ApiResult
 import com.zhouyou.http.model.HttpParams
 import com.zhouyou.http.subsciber.IProgressDialog
 
-abstract class RootFragment<T : ApiResult<*>> : Fragment() {
+abstract class RootFragment : Fragment() {
     private val loadingProgress: IProgressDialog by lazy { IProgressDialog { initProgress() } }
     private var isPrepare = false
     private var isFirst = true
@@ -64,7 +64,7 @@ abstract class RootFragment<T : ApiResult<*>> : Fragment() {
         }
     }
 
-    internal fun post(
+    internal fun <T : ApiResult<*>>request(
         url: String,
         params: HttpParams,
         success: (result: T) -> Unit = {},
@@ -73,12 +73,12 @@ abstract class RootFragment<T : ApiResult<*>> : Fragment() {
     ) {
         EasyHttp.post(url)
             .params(params)
-            .execute(object : ProgressDialogCallBack<T>(loadingProgress, showProgress, true) {
+            .execute(object : ProgressDialogCallBack<T>(loadingProgress, showProgress, false) {
                 override fun onSuccess(result: T?) {
                     result?.let {
                         if (it.isOk) {
                             success(it)
-                            this@RootFragment.onSuccess(it)
+                            this@RootFragment.onSuccess(it.data)
                         } else {
                             error(it.msg)
                             this@RootFragment.onError(it.msg)
@@ -107,7 +107,7 @@ abstract class RootFragment<T : ApiResult<*>> : Fragment() {
     /**
      * 请求成功
      */
-    open fun onSuccess(result: T) {}
+    open fun onSuccess(result: Any) {}
 
     /**
      * 请求失败

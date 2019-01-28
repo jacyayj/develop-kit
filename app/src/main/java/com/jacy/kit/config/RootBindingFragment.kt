@@ -8,7 +8,7 @@ import com.jacy.develop.kit.BR
 import com.zhouyou.http.model.ApiResult
 import java.lang.reflect.ParameterizedType
 
-abstract class RootBindingFragment<T, A : ApiResult<*>> : RootFragment<A>() {
+abstract class RootBindingFragment<T> : RootFragment() {
 
     open val model: T by lazy { getClassInstance().newInstance() }
     private val binding by lazy { view?.let { DataBindingUtil.bind<ViewDataBinding>(it) } }

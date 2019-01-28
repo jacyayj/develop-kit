@@ -16,7 +16,7 @@ import com.zhouyou.http.subsciber.IProgressDialog
  * Created by jacy on 2018/12/19.
  * 根activity，初始化各种通用数据；
  */
-abstract class RootActivity<T : ApiResult<*>> : AppCompatActivity() {
+abstract class RootActivity : AppCompatActivity() {
 
     private val loadingProgress: IProgressDialog by lazy { IProgressDialog { initProgress() } }
 
@@ -41,7 +41,7 @@ abstract class RootActivity<T : ApiResult<*>> : AppCompatActivity() {
         }
     }
 
-    internal fun post(
+    internal fun <T : ApiResult<*>> request(
         url: String,
         params: HttpParams,
         success: (result: T) -> Unit = {},
@@ -50,12 +50,12 @@ abstract class RootActivity<T : ApiResult<*>> : AppCompatActivity() {
     ) {
         EasyHttp.post(url)
             .params(params)
-            .execute(object : ProgressDialogCallBack<T>(loadingProgress, showProgress, true) {
+            .execute(object : ProgressDialogCallBack<T>(loadingProgress, showProgress, false) {
                 override fun onSuccess(result: T?) {
                     result?.let {
                         if (it.isOk) {
                             success(it)
-                            this@RootActivity.onSuccess(it)
+                            this@RootActivity.onSuccess(it.data)
                         } else {
                             error(it.msg)
                             this@RootActivity.onError(it.msg)
@@ -88,7 +88,7 @@ abstract class RootActivity<T : ApiResult<*>> : AppCompatActivity() {
     /**
      * 请求成功
      */
-    open fun onSuccess(result: T) {
+    open fun onSuccess(result: Any) {
 
     }
 
