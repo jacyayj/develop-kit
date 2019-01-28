@@ -19,7 +19,7 @@ abstract class RootFragment : Fragment() {
     private var isFirst = true
 
 
-    private fun getLayoutId(): Int {
+    fun getLayoutId(): Int {
         return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
             val field = javaClass.getAnnotation(ContentView::class.java)
             field.layoutId
@@ -64,7 +64,7 @@ abstract class RootFragment : Fragment() {
         }
     }
 
-    internal fun <T : ApiResult<*>>request(
+    fun <T : ApiResult<*>>request(
         url: String,
         params: HttpParams,
         success: (result: T) -> Unit = {},

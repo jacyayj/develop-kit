@@ -32,7 +32,7 @@ abstract class RootActivity : AppCompatActivity() {
     /**
      * 设置页面layout
      */
-    internal fun getLayoutId(): Int {
+    fun getLayoutId(): Int {
         return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
             val field = javaClass.getAnnotation(ContentView::class.java)
             field.layoutId
@@ -41,7 +41,7 @@ abstract class RootActivity : AppCompatActivity() {
         }
     }
 
-    internal fun <T : ApiResult<*>> request(
+    fun <T : ApiResult<*>> request(
         url: String,
         params: HttpParams,
         success: (result: T) -> Unit = {},
