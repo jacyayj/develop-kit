@@ -1,24 +1,25 @@
 package com.jacy.kit.config
 
-import android.app.ProgressDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.jacy.kit.net.CommonCallBack
+import com.jacy.kit.net.HttpCallBack
+import com.jacy.kit.weight.LoadingDialog
 import com.vondear.rxtool.RxActivityTool
 import com.zhouyou.http.EasyHttp
-import com.zhouyou.http.callback.ProgressDialogCallBack
-import com.zhouyou.http.exception.ApiException
-import com.zhouyou.http.model.ApiResult
 import com.zhouyou.http.model.HttpParams
-import com.zhouyou.http.subsciber.IProgressDialog
 
 /**
  * Created by jacy on 2018/12/19.
  * 根activity，初始化各种通用数据；
  */
-abstract class RootActivity : AppCompatActivity() {
+abstract class RootActivity : AppCompatActivity(), HttpCallBack {
 
-    private val loadingProgress: IProgressDialog by lazy { IProgressDialog { initProgress() } }
+    private var httpCount = 0
+
+    private val loadingDialog by lazy { initProgress() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,42 +42,32 @@ abstract class RootActivity : AppCompatActivity() {
         }
     }
 
-    fun <T : ApiResult<*>> request(
-        url: String,
-        params: HttpParams,
-        success: (result: T) -> Unit = {},
-        error: (msg: String) -> Unit = { toast(it) },
-        showProgress: Boolean = true
-    ) {
+    fun request(url: String, params: HttpParams, callBack: CommonCallBack<*, *>) {
         EasyHttp.post(url)
             .params(params)
-            .execute(object : ProgressDialogCallBack<T>(loadingProgress, showProgress, false) {
-                override fun onSuccess(result: T?) {
-                    result?.let {
-                        if (it.isOk) {
-                            success(it)
-                            this@RootActivity.onSuccess(it.data)
-                        } else {
-                            error(it.msg)
-                            this@RootActivity.onError(it.msg)
-                        }
-                    }
-                }
-
-                override fun onError(e: ApiException?) {
-                    super.onError(e)
-                    error(e?.message ?: e?.displayMessage ?: "${e?.code}")
-                    this@RootActivity.onError(e?.message ?: e?.displayMessage ?: "${e?.code}")
-                }
-
-                override fun onCompleted() {
-                    super.onCompleted()
-                    onFinish()
-                }
-            })
+            .execute(callBack)
     }
 
-    abstract fun initProgress(): ProgressDialog
+
+    override fun onBegin() {
+        if (showLoading()) {
+            if (httpCount == 0)
+                loadingDialog.show()
+            httpCount++
+        }
+    }
+
+    override fun onFinish() {
+        if (showLoading()) {
+            httpCount--
+            if (httpCount == 0)
+                loadingDialog.show()
+        }
+    }
+
+    fun showLoading() = true
+
+    fun initProgress(): Dialog  = LoadingDialog(this)
 
     /**
      * 初始化数据
@@ -84,23 +75,6 @@ abstract class RootActivity : AppCompatActivity() {
     open fun initData() {
         TODO("进行数据的初始化")
     }
-
-    /**
-     * 请求成功
-     */
-    open fun onSuccess(result: Any) {
-
-    }
-
-    /**
-     * 请求失败
-     */
-    open fun onError(msg: String) {}
-
-    /**
-     * 请求结束
-     */
-    open fun onFinish() {}
 
     /**
      * 初始化监听器
