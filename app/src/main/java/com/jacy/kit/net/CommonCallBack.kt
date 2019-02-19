@@ -16,6 +16,7 @@ open class CommonCallBack<T : ApiResult<C>, C>(private val callBack: HttpCallBac
     override fun onError(e: ApiException?) {
         callBack.onError(e?.displayMessage ?: e?.localizedMessage ?: e?.message
         ?: "未知错误 : ${e?.code}")
+        callBack.onFinish()
     }
 
     override fun onStart() {
