@@ -1,7 +1,6 @@
 package com.jacy.kit.config
 
 import android.app.Dialog
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,11 +10,7 @@ import com.jacy.kit.net.CommonCallBack
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.zhouyou.http.EasyHttp
-import com.zhouyou.http.callback.ProgressDialogCallBack
-import com.zhouyou.http.exception.ApiException
-import com.zhouyou.http.model.ApiResult
 import com.zhouyou.http.model.HttpParams
-import com.zhouyou.http.subsciber.IProgressDialog
 
 abstract class RootFragment : Fragment(), HttpCallBack {
 
@@ -24,7 +19,7 @@ abstract class RootFragment : Fragment(), HttpCallBack {
 
     private var httpCount = 0
 
-    private val loadingDialog by lazy { initProgress() }
+    private val loadingDialog by lazy { initLoading() }
 
     fun getLayoutId(): Int {
         return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
@@ -95,7 +90,7 @@ abstract class RootFragment : Fragment(), HttpCallBack {
 
     fun showLoading() = true
 
-    fun initProgress(): Dialog = LoadingDialog(context!!)
+    fun initLoading(): Dialog = LoadingDialog(context!!)
 
 
     open fun initData() {
