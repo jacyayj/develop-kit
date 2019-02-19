@@ -19,7 +19,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
 
     private var httpCount = 0
 
-    private val loadingDialog by lazy { initProgress() }
+    private val loadingDialog by lazy { initLoading() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,24 +50,20 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
 
 
     override fun onBegin() {
-        if (showLoading()) {
-            if (httpCount == 0)
-                loadingDialog.show()
-            httpCount++
-        }
+        if (httpCount == 0)
+            loadingDialog.show()
+        httpCount++
     }
 
     override fun onFinish() {
-        if (showLoading()) {
+        if (httpCount > 0) {
             httpCount--
             if (httpCount == 0)
                 loadingDialog.show()
         }
     }
 
-    fun showLoading() = true
-
-    fun initProgress(): Dialog  = LoadingDialog(this)
+    fun initLoading(): Dialog = LoadingDialog(this)
 
     /**
      * 初始化数据
@@ -79,7 +75,9 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     /**
      * 初始化监听器
      */
-    open fun initListener() {}
+    open fun initListener() {
+        TODO("进行事件初始化")
+    }
 
     /**
      * 初始化databinding
