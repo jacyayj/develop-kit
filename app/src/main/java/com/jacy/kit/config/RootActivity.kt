@@ -43,7 +43,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     }
 
     fun request(url: String, params: HttpParams, callBack: CommonCallBack<*, *>) {
-        EasyHttp.post(url)
+       EasyHttp.post(url)
             .params(params)
             .execute(callBack)
     }
@@ -59,7 +59,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
         if (httpCount > 0) {
             httpCount--
             if (httpCount == 0)
-                loadingDialog.show()
+                loadingDialog.dismiss()
         }
     }
 

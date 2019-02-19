@@ -11,5 +11,6 @@ class LoadingDialog(context: Context) : Dialog(context, R.style.Dialog) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_loading)
         setCanceledOnTouchOutside(false)
+        setCancelable(false)
     }
 }
