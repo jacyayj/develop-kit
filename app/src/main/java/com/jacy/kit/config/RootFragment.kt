@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jacy.kit.net.CommonCallBack
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.zhouyou.http.EasyHttp
@@ -64,12 +63,6 @@ abstract class RootFragment : Fragment(), HttpCallBack {
             } else
                 onInvisible()
         }
-    }
-
-    fun request(url: String, params: HttpParams, callBack: CommonCallBack<*, *>) {
-        EasyHttp.post(url)
-            .params(params)
-            .execute(callBack)
     }
 
     override fun onBegin() {

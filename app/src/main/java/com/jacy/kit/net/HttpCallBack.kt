@@ -10,7 +10,7 @@ interface HttpCallBack {
     /**
      * 请求成功
      */
-    fun onSuccess(result: Any?) {}
+    fun onSuccess(url:String,result: Any?) {}
 
     /**
      * 请求失败
