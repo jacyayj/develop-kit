@@ -69,14 +69,12 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
      * 初始化数据
      */
     open fun initData() {
-        TODO("进行数据的初始化")
     }
 
     /**
      * 初始化监听器
      */
     open fun initListener() {
-        TODO("进行事件初始化")
     }
 
     /**
