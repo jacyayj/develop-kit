@@ -66,25 +66,20 @@ abstract class RootFragment : Fragment(), HttpCallBack {
     }
 
     override fun onBegin() {
-        if (showLoading()) {
-            if (httpCount == 0)
-                loadingDialog.show()
-            httpCount++
-        }
+        if (httpCount == 0)
+            loadingDialog.show()
+        httpCount++
     }
 
     override fun onFinish() {
-        if (showLoading()) {
+        if (httpCount > 0) {
             httpCount--
             if (httpCount == 0)
-                loadingDialog.show()
+                loadingDialog.dismiss()
         }
     }
 
-    fun showLoading() = true
-
     fun initLoading(): Dialog = LoadingDialog(context!!)
-
 
     open fun initData() {
     }

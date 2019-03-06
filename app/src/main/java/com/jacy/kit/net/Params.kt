@@ -1,4 +1,4 @@
-package com.jacy.kit.config
+package com.jacy.kit.net
 
 import java.lang.annotation.Inherited
 
@@ -6,4 +6,4 @@ import java.lang.annotation.Inherited
 @Retention(AnnotationRetention.RUNTIME)
 @Inherited
 @MustBeDocumented
-annotation class ParamsName constructor(val name: String)
+annotation class Params constructor(val url:Array<String>,val name: String)

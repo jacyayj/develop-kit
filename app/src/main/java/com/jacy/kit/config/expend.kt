@@ -160,6 +160,14 @@ fun toast(msg: String?) {
     toastor?.show()
 }
 
+fun toast(resId: Int) {
+    if (toastor == null)
+        toastor = Toast.makeText(RxTool.getContext(), resId, Toast.LENGTH_SHORT)
+    else
+        toastor?.setText(resId)
+    toastor?.show()
+}
+
 fun Any.copy(obj: Any) {
     val fields = javaClass.declaredFields
     fields.forEach {
