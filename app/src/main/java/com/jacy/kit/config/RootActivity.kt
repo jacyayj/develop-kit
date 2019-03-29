@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.jacy.kit.net.CommonCallBack
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.vondear.rxtool.RxActivityTool
@@ -40,12 +39,6 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
         } else {
             throw NullPointerException("activity 未设置页面layoutId")
         }
-    }
-
-    fun request(url: String, params: HttpParams, callBack: CommonCallBack<*, *>) {
-       EasyHttp.post(url)
-            .params(params)
-            .execute(callBack)
     }
 
 

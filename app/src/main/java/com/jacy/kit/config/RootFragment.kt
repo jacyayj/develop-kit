@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jacy.kit.net.CommonCallBack
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.zhouyou.http.EasyHttp
@@ -66,32 +65,21 @@ abstract class RootFragment : Fragment(), HttpCallBack {
         }
     }
 
-    fun request(url: String, params: HttpParams, callBack: CommonCallBack<*, *>) {
-        EasyHttp.post(url)
-            .params(params)
-            .execute(callBack)
-    }
-
     override fun onBegin() {
-        if (showLoading()) {
-            if (httpCount == 0)
-                loadingDialog.show()
-            httpCount++
-        }
+        if (httpCount == 0)
+            loadingDialog.show()
+        httpCount++
     }
 
     override fun onFinish() {
-        if (showLoading()) {
+        if (httpCount > 0) {
             httpCount--
             if (httpCount == 0)
-                loadingDialog.show()
+                loadingDialog.dismiss()
         }
     }
 
-    fun showLoading() = true
-
     fun initLoading(): Dialog = LoadingDialog(context!!)
-
 
     open fun initData() {
     }
