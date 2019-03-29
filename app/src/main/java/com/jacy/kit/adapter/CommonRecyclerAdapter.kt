@@ -11,7 +11,7 @@ import com.jacy.develop.kit.BR
 class CommonRecyclerAdapter<T>(
     private val layoutInflater: LayoutInflater,
     private val layoutId: Int,
-    var data: MutableList<T>,
+    var data: MutableList<T> = ArrayList(),
     private val function: (view: View, t: T, position: Int) -> Unit = { _, _, _ -> }
 ) : RecyclerView.Adapter<CommonRecyclerAdapter<T>.Holder>() {
 

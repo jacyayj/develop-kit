@@ -14,7 +14,7 @@ import com.jacy.develop.kit.BR
 class CommonAdapter<T>(
     private val layoutInflater: LayoutInflater,
     private val layoutId: Int,
-    private var data: MutableList<T> = ArrayList(),
+    var data: MutableList<T> = ArrayList(),
     val function: (view: View, t: T, position: Int) -> Unit = { _, _, _ -> }
 ) : BaseAdapter() {
 
