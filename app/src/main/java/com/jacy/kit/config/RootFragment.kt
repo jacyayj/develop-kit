@@ -2,16 +2,14 @@ package com.jacy.kit.config
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
-import com.zhouyou.http.EasyHttp
-import com.zhouyou.http.model.HttpParams
 
-abstract class RootFragment : androidx.fragment.app.Fragment(), HttpCallBack {
+abstract class RootFragment :Fragment(), HttpCallBack {
 
     private var isPrepare = false
     private var isFirst = true

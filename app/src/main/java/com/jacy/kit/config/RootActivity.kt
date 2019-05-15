@@ -2,13 +2,11 @@ package com.jacy.kit.config
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.vondear.rxtool.RxActivityTool
-import com.zhouyou.http.EasyHttp
-import com.zhouyou.http.model.HttpParams
 
 /**
  * Created by jacy on 2018/12/19.

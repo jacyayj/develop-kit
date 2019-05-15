@@ -6,10 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
-import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.vondear.rxtool.RxTool
 
@@ -28,9 +28,9 @@ fun Context.mgetDrawable(id: Int): Drawable = resources.getDrawable(id)
 
 fun Context.mgetDimension(id: Int): Int = resources.getDimensionPixelSize(id)
 
-fun androidx.fragment.app.Fragment.getIntArray(id: Int) = resources.getIntArray(id)
+fun Fragment.getIntArray(id: Int) = resources.getIntArray(id)
 
-fun androidx.fragment.app.Fragment.getStringArray(id: Int) = resources.getStringArray(id)
+fun Fragment.getStringArray(id: Int) = resources.getStringArray(id)
 
 fun View.gone() {
     if (visibility != View.GONE)
@@ -117,7 +117,7 @@ fun Context.mStartActivityForResult(cls: Class<*>, requestCode: Int, vararg arg:
     startActivityForResult(this as Activity, i, requestCode, null)
 }
 
-fun androidx.fragment.app.Fragment.mStartActivity(cls: Class<*>, vararg arg: Pair<String, *>) {
+fun Fragment.mStartActivity(cls: Class<*>, vararg arg: Pair<String, *>) {
     val i = Intent(context, cls)
     arg.forEach {
         val value = it.second
@@ -133,7 +133,7 @@ fun androidx.fragment.app.Fragment.mStartActivity(cls: Class<*>, vararg arg: Pai
     startActivity(i)
 }
 
-fun androidx.fragment.app.Fragment.mStartActivityForResult(cls: Class<*>, requestCode: Int) {
+fun Fragment.mStartActivityForResult(cls: Class<*>, requestCode: Int) {
     startActivityForResult(Intent(context, cls), requestCode)
 }
 
