@@ -1,7 +1,7 @@
 package com.jacy.kit.weight
 
 import android.content.Context
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.view.MotionEvent
 
@@ -9,7 +9,7 @@ import android.view.MotionEvent
  * Created by Administrator on 2017/6/25 0025.
  */
 
-class NoScrollViewPager : ViewPager {
+class NoScrollViewPager : androidx.viewpager.widget.ViewPager {
 
 
     constructor(context: Context) : super(context)

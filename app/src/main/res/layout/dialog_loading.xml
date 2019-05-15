@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:alpha="0.8"
-    android:background="@color/black"
-    app:cardCornerRadius="5dp">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:alpha="0.8"
+                                                   android:background="@color/black"
+                                                   app:cardCornerRadius="5dp">
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/avi"
@@ -16,4 +16,4 @@
         android:visibility="visible"
         app:indicatorColor="@color/white"
         app:indicatorName="LineSpinFadeLoaderIndicator" />
-</android.support.design.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView>

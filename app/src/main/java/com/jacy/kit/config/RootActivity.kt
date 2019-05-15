@@ -2,7 +2,7 @@ package com.jacy.kit.config
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog

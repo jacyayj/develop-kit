@@ -1,8 +1,8 @@
 package com.jacy.kit.weight
 
 import android.content.Context
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.AttributeSet
 import com.jacy.develop.kit.R
 import com.jacy.kit.config.mgetColor
@@ -19,7 +19,11 @@ open class CommonRecyclerView : SwipeMenuRecyclerView {
 
 
     fun initVertical(dividerSize: Float = 0.5f, dividerColor: Int = R.color.colorDefaultDivider) {
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            context,
+            androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+            false
+        )
         addItemDecoration(
             DefaultItemDecoration(
                 context.mgetColor(dividerColor),
@@ -30,7 +34,11 @@ open class CommonRecyclerView : SwipeMenuRecyclerView {
     }
 
     fun initHorizontal(dividerSize: Float = 0.5f, dividerColor: Int = R.color.colorDefaultDivider) {
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            context,
+            androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+            false
+        )
         addItemDecoration(
             DefaultItemDecoration(
                 context.mgetColor(dividerColor),
@@ -41,7 +49,7 @@ open class CommonRecyclerView : SwipeMenuRecyclerView {
     }
 
     fun initGrid(lineCount: Int, dividerSize: Float = 0.5f, dividerColor: Int = R.color.colorDefaultDivider) {
-        layoutManager = GridLayoutManager(context, lineCount)
+        layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, lineCount)
         addItemDecoration(
             DefaultItemDecoration(
                 context.mgetColor(dividerColor),

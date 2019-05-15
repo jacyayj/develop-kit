@@ -1,8 +1,8 @@
 package com.jacy.kit.adapter
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ class CommonRecyclerAdapter<T>(
     private val layoutId: Int,
     var data: MutableList<T> = ArrayList(),
     private val function: (view: View, t: T, position: Int) -> Unit = { _, _, _ -> }
-) : RecyclerView.Adapter<CommonRecyclerAdapter<T>.Holder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<CommonRecyclerAdapter<T>.Holder>() {
 
     fun refresh(data: MutableList<T>) {
         this.data = data
@@ -58,5 +58,5 @@ class CommonRecyclerAdapter<T>(
         holder.binding.setVariable(BR.item, data[position])
     }
 
-    inner class Holder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class Holder(val binding: ViewDataBinding) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root)
 }
