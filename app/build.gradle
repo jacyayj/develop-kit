@@ -29,29 +29,31 @@ android {
 }
 
 dependencies {
-    api fileTree(include: ['*.jar'], dir: 'libs')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     //noinspection GradleCompatible
-    api 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
     //网络请求库
-    api 'com.zhouyou:rxeasyhttp:2.1.2'
+    implementation 'com.zhouyou:rxeasyhttp:2.1.2'
     //基础工具库
-    api 'com.github.vondear.RxTool:RxKit:v2.2.7'
+    implementation 'com.github.vondear.RxTool:RxKit:v2.3.9'
     //recyclerview
-    api 'com.yanzhenjie:recyclerview-swipe:1.2.0'
+    implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
     //Glide v4
-    api 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
     //下拉刷新
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8'
+    //androidx
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //图片选择库
-    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
     //解决65535
-    api 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
     //MaterialDesign设计库
-    api 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
     //常用ui组件
-    api 'com.yhy.widget:view-core:1.4.1'
+    implementation 'com.yhy.widget:view-core:1.4.1'
     //loading弹窗
-    api 'com.wang.avi:library:2.1.3'
+    implementation 'com.wang.avi:library:2.1.3'
 
 }
