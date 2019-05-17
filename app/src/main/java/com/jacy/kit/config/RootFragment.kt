@@ -8,17 +8,32 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
+import com.zhouyou.http.EasyHttp
+import com.zhouyou.http.callback.CallBack
+import io.reactivex.disposables.Disposable
 
-abstract class RootFragment :Fragment(), HttpCallBack {
+abstract class RootFragment : Fragment(), HttpCallBack {
 
     private var isPrepare = false
     private var isFirst = true
 
     private var httpCount = 0
 
-    private val loadingDialog by lazy { initLoading() }
+    private val loadingDialog by lazy {
+        initLoading().apply {
+            setOnDismissListener {
+                httpPool.forEach {
+                    EasyHttp.cancelSubscription(it)
+                }
+                httpPool.clear()
+            }
+        }
+    }
 
-    fun getLayoutId(): Int {
+    private val httpPool by lazy { ArrayList<Disposable>() }
+    private val backgroundHttpPool by lazy { ArrayList<Disposable>() }
+
+    open fun getLayoutId(): Int {
         return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
             val field = javaClass.getAnnotation(ContentView::class.java)
             field.layoutId
@@ -63,10 +78,20 @@ abstract class RootFragment :Fragment(), HttpCallBack {
         }
     }
 
-    override fun onBegin() {
-        if (httpCount == 0)
-            loadingDialog.show()
-        httpCount++
+    open fun postUrl(url: String, callBack: CallBack<*>, showLoading: Boolean) {
+        val disposable = EasyHttp.post(url).execute(callBack)
+        if (showLoading)
+            httpPool.add(disposable)
+        else
+            backgroundHttpPool.add(disposable)
+    }
+
+    override fun onBegin(showLoading: Boolean) {
+        if (showLoading) {
+            if (httpCount == 0)
+                loadingDialog.show()
+            httpCount++
+        }
     }
 
     override fun onFinish() {
@@ -77,7 +102,10 @@ abstract class RootFragment :Fragment(), HttpCallBack {
         }
     }
 
-    fun initLoading(): Dialog = LoadingDialog(context!!)
+    open fun initLoading(): Dialog {
+        return LoadingDialog(context)
+    }
+
 
     open fun initData() {
     }

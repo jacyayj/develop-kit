@@ -5,12 +5,12 @@ interface HttpCallBack {
     /**
      * 请求成功
      */
-    fun onBegin() {}
+    fun onBegin(showLoading: Boolean) {}
 
     /**
      * 请求成功
      */
-    fun onSuccess(url:String,result: Any?) {}
+    fun onSuccess(url: String, result: Any?) {}
 
     /**
      * 请求失败
