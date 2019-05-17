@@ -10,6 +10,7 @@ import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallBack
+import com.zhouyou.http.model.HttpParams
 import io.reactivex.disposables.Disposable
 
 abstract class RootFragment : Fragment(), HttpCallBack {
@@ -78,8 +79,8 @@ abstract class RootFragment : Fragment(), HttpCallBack {
         }
     }
 
-    open fun postUrl(url: String, callBack: CallBack<*>, showLoading: Boolean) {
-        val disposable = EasyHttp.post(url).execute(callBack)
+    open fun postUrl(url: String, params: HttpParams, callBack: CallBack<*>, showLoading: Boolean) {
+        val disposable = EasyHttp.post(url).params(params).execute(callBack)
         if (showLoading)
             httpPool.add(disposable)
         else

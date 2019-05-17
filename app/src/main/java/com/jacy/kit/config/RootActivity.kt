@@ -9,6 +9,7 @@ import com.jacy.kit.weight.LoadingDialog
 import com.vondear.rxtool.RxActivityTool
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallBack
+import com.zhouyou.http.model.HttpParams
 import io.reactivex.disposables.Disposable
 
 /**
@@ -54,8 +55,8 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
         }
     }
 
-    open fun postUrl(url: String, callBack: CallBack<*>, showLoading: Boolean) {
-        val disposable = EasyHttp.post(url).execute(callBack)
+    open fun postUrl(url: String, params: HttpParams, callBack: CallBack<*>, showLoading: Boolean) {
+        val disposable = EasyHttp.post(url).params(params).execute(callBack)
         if (showLoading)
             httpPool.add(disposable)
         else
