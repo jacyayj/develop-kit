@@ -137,6 +137,23 @@ fun Fragment.mStartActivityForResult(cls: Class<*>, requestCode: Int) {
     startActivityForResult(Intent(context, cls), requestCode)
 }
 
+fun Fragment.mStartActivityForResult(cls: Class<*>, requestCode: Int, vararg arg: Pair<String, *>) {
+    val i = Intent(context, cls)
+    arg.forEach {
+        val value = it.second
+        when (value) {
+            is String -> i.putExtra(it.first, value)
+            is Int -> i.putExtra(it.first, value)
+            is Float -> i.putExtra(it.first, value)
+            is Boolean -> i.putExtra(it.first, value)
+            is ArrayList<*> -> i.putStringArrayListExtra(it.first, value as java.util.ArrayList<String>?)
+            is Parcelable -> i.putExtra(it.first, value)
+            else -> i.putExtra(it.first, Gson().toJson(value))
+        }
+    }
+    startActivityForResult(this as Activity, i, requestCode, null)
+}
+
 /**
  * 功能：判断字符串是否为数字
  *
@@ -150,22 +167,13 @@ fun String.isZero(): Boolean {
         this == "0"
 }
 
-private var toastor: Toast? = null
 
-fun toast(msg: String?) {
-    if (toastor == null)
-        toastor = Toast.makeText(RxTool.getContext(), msg, Toast.LENGTH_SHORT)
-    else
-        toastor?.setText(msg)
-    toastor?.show()
+fun toast(msg: CharSequence?) {
+    Toast.makeText(RxTool.getContext(), msg, Toast.LENGTH_SHORT).show()
 }
 
 fun toast(resId: Int) {
-    if (toastor == null)
-        toastor = Toast.makeText(RxTool.getContext(), resId, Toast.LENGTH_SHORT)
-    else
-        toastor?.setText(resId)
-    toastor?.show()
+    Toast.makeText(RxTool.getContext(), resId, Toast.LENGTH_SHORT).show()
 }
 
 fun Any.copy(obj: Any) {

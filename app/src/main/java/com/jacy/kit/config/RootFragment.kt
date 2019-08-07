@@ -37,7 +37,7 @@ abstract class RootFragment : Fragment(), HttpCallBack {
     open fun getLayoutId(): Int {
         return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
             val field = javaClass.getAnnotation(ContentView::class.java)
-            field.layoutId
+            field?.layoutId?:-1
         } else {
             throw NullPointerException("fragment 未设置页面layoutId")
         }
@@ -87,7 +87,7 @@ abstract class RootFragment : Fragment(), HttpCallBack {
             backgroundHttpPool.add(disposable)
     }
 
-    override fun onBegin(showLoading: Boolean) {
+    override fun onBegin(showLoading: Boolean,url: String) {
         if (showLoading) {
             if (httpCount == 0)
                 loadingDialog.show()
@@ -95,7 +95,7 @@ abstract class RootFragment : Fragment(), HttpCallBack {
         }
     }
 
-    override fun onFinish() {
+    override fun onFinish(url: String) {
         if (httpCount > 0) {
             httpCount--
             if (httpCount == 0)
@@ -104,7 +104,7 @@ abstract class RootFragment : Fragment(), HttpCallBack {
     }
 
     open fun initLoading(): Dialog {
-        return LoadingDialog(context)
+        return LoadingDialog(context!!)
     }
 
 

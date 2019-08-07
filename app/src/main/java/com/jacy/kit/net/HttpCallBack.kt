@@ -3,9 +3,9 @@ package com.jacy.kit.net
 interface HttpCallBack {
 
     /**
-     * 请求成功
+     * 请求开始
      */
-    fun onBegin(showLoading: Boolean) {}
+    fun onBegin(showLoading: Boolean,url: String) {}
 
     /**
      * 请求成功
@@ -15,11 +15,11 @@ interface HttpCallBack {
     /**
      * 请求失败
      */
-    fun onError(msg: String) {}
+    fun onError(msg: String, url: String) {}
 
     /**
      * 请求结束
      */
-    fun onFinish() {}
+    fun onFinish(url: String) {}
 
 }

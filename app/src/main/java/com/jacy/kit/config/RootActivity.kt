@@ -49,7 +49,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     open fun getLayoutId(): Int {
         return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
             val field = javaClass.getAnnotation(ContentView::class.java)
-            field.layoutId
+            field?.layoutId?:-1
         } else {
             throw NullPointerException("activity 未设置页面layoutId")
         }
@@ -63,7 +63,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
             backgroundHttpPool.add(disposable)
     }
 
-    override fun onBegin(showLoading: Boolean) {
+    override fun onBegin(showLoading: Boolean,url: String) {
         if (showLoading) {
             if (httpCount == 0)
                 loadingDialog.show()
@@ -71,7 +71,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
         }
     }
 
-    override fun onFinish() {
+    override fun onFinish(url: String) {
         if (httpCount > 0) {
             httpCount--
             if (httpCount == 0)
