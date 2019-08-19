@@ -7,12 +7,14 @@ object log {
 
     var TAG = "jacy_log"
 
+    private val gson by lazy { GsonBuilder().setPrettyPrinting().create() }
+
     fun v(msg: String?) {
         RxLogTool.v(TAG, msg ?: "msg is null")
     }
 
     fun json(msg: Any?) {
-        RxLogTool.v(TAG, msg?.let { GsonBuilder().setPrettyPrinting().create().toJson(it) } ?: "msg is null")
+        RxLogTool.v(TAG, msg?.let { gson.toJson(it) } ?: "msg is null")
     }
 
 }

@@ -26,7 +26,7 @@ dependencies {
     //noinspection GradleCompatible
     api 'androidx.appcompat:appcompat:1.1.0-rc01'
     //网络请求库
-    api 'com.zhouyou:rxeasyhttp:2.1.2'
+    api 'com.zhouyou:rxeasyhttp:2.1.5'
     //基础工具库
     api 'com.github.vondear.RxTool:RxKit:v2.3.9'
     //recyclerview

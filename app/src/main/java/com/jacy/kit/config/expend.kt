@@ -58,8 +58,7 @@ fun Activity.mStartActivity(cls: Class<*>) {
 fun Activity.mStartActivity(cls: Class<*>, vararg arg: Pair<String, *>) {
     val i = Intent(this, cls)
     arg.forEach {
-        val value = it.second
-        when (value) {
+        when (val value = it.second) {
             is String -> i.putExtra(it.first, value)
             is Int -> i.putExtra(it.first, value)
             is Float -> i.putExtra(it.first, value)
@@ -83,8 +82,7 @@ fun Context.mStartActivity(cls: Class<*>) {
 fun Context.mStartActivity(cls: Class<*>, vararg arg: Pair<String, *>) {
     val i = Intent(this, cls)
     arg.forEach {
-        val value = it.second
-        when (value) {
+        when (val value = it.second) {
             is String -> i.putExtra(it.first, value)
             is Int -> i.putExtra(it.first, value)
             is Float -> i.putExtra(it.first, value)
@@ -103,8 +101,7 @@ fun Context.mStartActivityForResult(cls: Class<*>, requestCode: Int) {
 fun Context.mStartActivityForResult(cls: Class<*>, requestCode: Int, vararg arg: Pair<String, *>) {
     val i = Intent(this, cls)
     arg.forEach {
-        val value = it.second
-        when (value) {
+        when (val value = it.second) {
             is String -> i.putExtra(it.first, value)
             is Int -> i.putExtra(it.first, value)
             is Float -> i.putExtra(it.first, value)
@@ -120,8 +117,7 @@ fun Context.mStartActivityForResult(cls: Class<*>, requestCode: Int, vararg arg:
 fun Fragment.mStartActivity(cls: Class<*>, vararg arg: Pair<String, *>) {
     val i = Intent(context, cls)
     arg.forEach {
-        val value = it.second
-        when (value) {
+        when (val value = it.second) {
             is String -> i.putExtra(it.first, value)
             is Int -> i.putExtra(it.first, value)
             is Float -> i.putExtra(it.first, value)
@@ -140,8 +136,7 @@ fun Fragment.mStartActivityForResult(cls: Class<*>, requestCode: Int) {
 fun Fragment.mStartActivityForResult(cls: Class<*>, requestCode: Int, vararg arg: Pair<String, *>) {
     val i = Intent(context, cls)
     arg.forEach {
-        val value = it.second
-        when (value) {
+        when (val value = it.second) {
             is String -> i.putExtra(it.first, value)
             is Int -> i.putExtra(it.first, value)
             is Float -> i.putExtra(it.first, value)

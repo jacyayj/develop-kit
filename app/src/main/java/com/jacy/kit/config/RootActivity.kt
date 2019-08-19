@@ -49,7 +49,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     open fun getLayoutId(): Int {
         return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
             val field = javaClass.getAnnotation(ContentView::class.java)
-            field?.layoutId?:-1
+            field?.layoutId ?: -1
         } else {
             throw NullPointerException("activity 未设置页面layoutId")
         }
@@ -63,7 +63,7 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
             backgroundHttpPool.add(disposable)
     }
 
-    override fun onBegin(showLoading: Boolean,url: String) {
+    override fun onBegin(showLoading: Boolean, url: String) {
         if (showLoading) {
             if (httpCount == 0)
                 loadingDialog.show()
@@ -95,12 +95,17 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     open fun initListener() {
     }
 
+    fun getLoading(): Dialog {
+        return loadingDialog
+    }
+
     /**
      * 初始化databinding
      */
     open fun initDatabinding() {}
 
     override fun onDestroy() {
+        loadingDialog.dismiss()
         backgroundHttpPool.forEach {
             EasyHttp.cancelSubscription(it)
         }
