@@ -34,15 +34,6 @@ abstract class RootFragment : Fragment(), HttpCallBack {
     private val httpPool by lazy { ArrayList<Disposable>() }
     private val backgroundHttpPool by lazy { ArrayList<Disposable>() }
 
-    open fun getLayoutId(): Int {
-        return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
-            val field = javaClass.getAnnotation(ContentView::class.java)
-            field?.layoutId?:-1
-        } else {
-            throw NullPointerException("fragment 未设置页面layoutId")
-        }
-    }
-
     open fun getLayoutView(inflater: LayoutInflater, container: ViewGroup?): View =
         inflater.inflate(getLayoutId(), container, false)
 

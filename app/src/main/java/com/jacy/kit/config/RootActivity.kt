@@ -6,10 +6,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
+import com.zhouyou.http.model.HttpParams
 import com.vondear.rxtool.RxActivityTool
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallBack
-import com.zhouyou.http.model.HttpParams
 import io.reactivex.disposables.Disposable
 
 /**
@@ -41,18 +41,6 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
         initData()
         initListener()
         RxActivityTool.addActivity(this)
-    }
-
-    /**
-     * 设置页面layout
-     */
-    open fun getLayoutId(): Int {
-        return if (javaClass.isAnnotationPresent(ContentView::class.java)) {
-            val field = javaClass.getAnnotation(ContentView::class.java)
-            field?.layoutId ?: -1
-        } else {
-            throw NullPointerException("activity 未设置页面layoutId")
-        }
     }
 
     open fun postUrl(url: String, params: HttpParams, callBack: CallBack<*>, showLoading: Boolean) {

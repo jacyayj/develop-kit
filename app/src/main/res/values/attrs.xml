@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleProgressBar">
+        <attr name="cpb_progress" format="float" />
+        <attr name="cpb_progressColor" format="color" />
+        <attr name="cpb_progressBackgroundColor" format="color" />
+        <attr name="cpb_isClockwise" format="boolean" />
+        <attr name="cpb_centerColor" format="color" />
+        <attr name="cpb_centerText" format="string" />
+        <attr name="cpb_centerTextSize" format="dimension" />
+        <attr name="cpb_centerTextColor" format="color" />
+        <attr name="cpb_strokeWidth" format="dimension" />
+        <attr name="cpb_startAngle" format="float" />
+    </declare-styleable>
+    <declare-styleable name="StyleTextView">
+        <attr name="stv_radius" format="dimension"/>
+        <attr name="stv_strokeWidth" format="dimension"/>
+        <attr name="stv_strokeColor" format="color"/>
+    </declare-styleable>
+</resources>
