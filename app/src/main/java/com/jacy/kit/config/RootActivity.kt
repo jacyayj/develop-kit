@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ViewDataBinding
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.zhouyou.http.model.HttpParams
@@ -37,7 +38,6 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
-        initDatabinding()
         initData()
         initListener()
         RxActivityTool.addActivity(this)
@@ -86,11 +86,6 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     fun getLoading(): Dialog {
         return loadingDialog
     }
-
-    /**
-     * 初始化databinding
-     */
-    open fun initDatabinding() {}
 
     override fun onDestroy() {
         loadingDialog.dismiss()

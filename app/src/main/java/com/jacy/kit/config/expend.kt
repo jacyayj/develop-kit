@@ -23,7 +23,10 @@ import com.vondear.rxtool.RxTool
 
 fun Any.toJson() = GsonBuilder().disableInnerClassSerialization().create().toJson(this)
 
-fun Any.toJsonPretty() =
+fun Any.toJsonPretty(): String =
+    GsonBuilder().disableInnerClassSerialization().setPrettyPrinting().create().toJson(this)
+
+fun Any.toPrettyString(): String =
     GsonBuilder().disableInnerClassSerialization().setPrettyPrinting().create().toJson(this)
 
 fun Any.toJsonWithExpose() =

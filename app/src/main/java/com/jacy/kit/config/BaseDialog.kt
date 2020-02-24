@@ -10,7 +10,8 @@ import com.vondear.rxtool.RxDeviceTool
 open class BaseDialog(
     context: Context,
     private val gravity: Int = Gravity.NO_GRAVITY,
-    private val with: Float = 0.8f
+    private val with: Float = -1f,
+    private val height: Float = -1f
 ) :
     AlertDialog(context, R.style.Theme_dialog) {
 
@@ -23,9 +24,11 @@ open class BaseDialog(
     }
 
     private fun initDialog() {
-        val width = RxDeviceTool.getScreenWidth(context)
         val p = window?.attributes // 获取对话框当前的参数值
-        p?.width = (width * with).toInt()// 宽度设置为屏幕的占比
+        if (with != -1f)
+            p?.width = (RxDeviceTool.getScreenWidth(context) * with).toInt()// 宽度设置为屏幕的占比
+        if (height != -1f)
+            p?.height = (RxDeviceTool.getScreenHeight(context) * with).toInt()// 高度设置为屏幕的占比
         window?.setGravity(gravity)
         window?.attributes = p
     }

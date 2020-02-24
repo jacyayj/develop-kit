@@ -54,7 +54,7 @@ class CommonRecyclerAdapter<T>(
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.itemView?.let { function(it, data[position], position) }
+        function(holder.itemView, data[position], position)
         holder.binding.setVariable(BR.item, data[position])
     }
 

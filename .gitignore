@@ -7,6 +7,13 @@
 /.idea/workspace.xml
 .DS_Store
 /build
+/livedatatest
 /captures
 .externalNativeBuild
 !/local.properties
+/settings.gradle
+.gitignore
+build.gradle
+libs/
+proguard-rules.pro
+src/
