@@ -1,7 +1,7 @@
 package com.jacy.kit.utils
 
 import com.google.gson.GsonBuilder
-import com.vondear.rxtool.RxLogTool
+import com.tamsiree.rxtool.RxLogTool
 
 object log {
 

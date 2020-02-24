@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import com.jacy.develop.kit.R
-import com.vondear.rxtool.RxDeviceTool
+import com.tamsiree.rxtool.RxDeviceTool
 
 open class BaseDialog(
     context: Context,
@@ -13,7 +13,7 @@ open class BaseDialog(
     private val with: Float = -1f,
     private val height: Float = -1f
 ) :
-    AlertDialog(context, R.style.Theme_dialog) {
+    AlertDialog(context, R.style.Dialog) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

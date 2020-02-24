@@ -6,6 +6,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import android.view.View
@@ -14,7 +15,7 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.vondear.rxtool.RxTool
+import com.tamsiree.rxtool.RxTool
 
 /**
  * Created by Administrator on 2018/3/19.
@@ -33,6 +34,14 @@ fun Any.toJsonWithExpose() =
     GsonBuilder().disableInnerClassSerialization().excludeFieldsWithoutExposeAnnotation().create().toJson(
         this
     )
+
+fun Any.dp2px(dp: Float): Int {
+    return (Resources.getSystem().displayMetrics.density * dp + 0.5f).toInt()
+}
+
+fun Any.px2dp(px: Int): Float {
+    return Resources.getSystem().displayMetrics.density / px
+}
 
 @SuppressLint("NewApi")
 fun Context.mgetColor(id: Int) = resources.getColor(id)

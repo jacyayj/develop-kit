@@ -11,8 +11,8 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import com.jacy.kit.config.Action.INSTALL_APK
 import com.jacy.kit.config.toast
 import com.jacy.kit.utils.log
-import com.vondear.rxtool.RxActivityTool
-import com.vondear.rxtool.RxAppTool
+import com.tamsiree.rxtool.RxActivityTool
+import com.tamsiree.rxtool.RxAppTool
 
 class DownLoadReceiver :
     BroadcastReceiver() {

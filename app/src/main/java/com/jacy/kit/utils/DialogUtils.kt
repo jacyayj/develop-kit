@@ -2,8 +2,8 @@ package com.jacy.kit.utils
 
 import android.view.Gravity
 import android.view.Window
-import com.vondear.rxtool.RxDeviceTool
-import com.vondear.rxtool.RxTool
+import com.tamsiree.rxtool.RxDeviceTool
+import com.tamsiree.rxtool.RxTool
 
 /**
  * project:SRC

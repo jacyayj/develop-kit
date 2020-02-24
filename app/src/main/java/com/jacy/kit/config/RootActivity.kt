@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
+import com.tamsiree.rxtool.RxActivityTool
 import com.zhouyou.http.model.HttpParams
-import com.vondear.rxtool.RxActivityTool
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallBack
 import io.reactivex.disposables.Disposable

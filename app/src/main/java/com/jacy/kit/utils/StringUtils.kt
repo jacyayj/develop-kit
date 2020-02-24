@@ -7,7 +7,7 @@ import android.text.style.AbsoluteSizeSpan
 import android.text.style.DrawableMarginSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.LeadingMarginSpan
-import com.scwang.smartrefresh.layout.util.DensityUtil
+import com.jacy.kit.config.dp2px
 
 
 fun String.setColor(color: Int, start: Int, end: Int): SpannableStringBuilder {
@@ -25,7 +25,7 @@ fun String.setSize(size: Int, start: Int, end: Int): SpannableStringBuilder {
 fun String.setLeading(leading: Float): SpannableStringBuilder {
     val ssb = SpannableStringBuilder(this)
     ssb.setSpan(
-        LeadingMarginSpan.Standard(DensityUtil.dp2px(leading), 0),
+        LeadingMarginSpan.Standard(dp2px(leading), 0),
         0,
         length,
         Spannable.SPAN_INCLUSIVE_INCLUSIVE
@@ -36,7 +36,7 @@ fun String.setLeading(leading: Float): SpannableStringBuilder {
 fun String.setImage(drawable: Drawable, margin: Float, index: Int): SpannableStringBuilder {
     val ssb = SpannableStringBuilder(this)
     ssb.setSpan(
-        DrawableMarginSpan(drawable, DensityUtil.dp2px(margin)),
+        DrawableMarginSpan(drawable, dp2px(margin)),
         index,
         index + 1,
         Spannable.SPAN_INCLUSIVE_INCLUSIVE
