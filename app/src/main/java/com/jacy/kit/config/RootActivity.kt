@@ -8,10 +8,7 @@ import androidx.databinding.ViewDataBinding
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
 import com.tamsiree.rxtool.RxActivityTool
-import com.zhouyou.http.model.HttpParams
-import com.zhouyou.http.EasyHttp
-import com.zhouyou.http.callback.CallBack
-import io.reactivex.disposables.Disposable
+import rxhttp.RxHttpPlugins
 
 /**
  * Created by jacy on 2018/12/19.
@@ -22,18 +19,9 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
     private var httpCount = 0
 
     private val loadingDialog by lazy {
-        initLoading().apply {
-            setOnDismissListener {
-                httpPool.forEach {
-                    EasyHttp.cancelSubscription(it)
-                }
-                httpPool.clear()
-            }
-        }
+        initLoading()
     }
 
-    private val httpPool by lazy { ArrayList<Disposable>() }
-    private val backgroundHttpPool by lazy { ArrayList<Disposable>() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +31,6 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
         RxActivityTool.addActivity(this)
     }
 
-    open fun postUrl(url: String, params: HttpParams, callBack: CallBack<*>, showLoading: Boolean) {
-        val disposable = EasyHttp.post(url).params(params).execute(callBack)
-        if (showLoading)
-            httpPool.add(disposable)
-        else
-            backgroundHttpPool.add(disposable)
-    }
 
     override fun onBegin(showLoading: Boolean, url: String) {
         if (showLoading) {
@@ -89,10 +70,6 @@ abstract class RootActivity : AppCompatActivity(), HttpCallBack {
 
     override fun onDestroy() {
         loadingDialog.dismiss()
-        backgroundHttpPool.forEach {
-            EasyHttp.cancelSubscription(it)
-        }
-        backgroundHttpPool.clear()
         RxActivityTool.getActivityStack().remove(this)
         super.onDestroy()
     }

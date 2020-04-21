@@ -8,10 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jacy.kit.net.HttpCallBack
 import com.jacy.kit.weight.LoadingDialog
-import com.zhouyou.http.EasyHttp
-import com.zhouyou.http.callback.CallBack
-import com.zhouyou.http.model.HttpParams
-import io.reactivex.disposables.Disposable
 
 abstract class RootFragment : Fragment(), HttpCallBack {
 
@@ -21,18 +17,8 @@ abstract class RootFragment : Fragment(), HttpCallBack {
     private var httpCount = 0
 
     private val loadingDialog by lazy {
-        initLoading().apply {
-            setOnDismissListener {
-                httpPool.forEach {
-                    EasyHttp.cancelSubscription(it)
-                }
-                httpPool.clear()
-            }
-        }
+        initLoading()
     }
-
-    private val httpPool by lazy { ArrayList<Disposable>() }
-    private val backgroundHttpPool by lazy { ArrayList<Disposable>() }
 
     open fun getLayoutView(inflater: LayoutInflater, container: ViewGroup?): View =
         inflater.inflate(getLayoutId(), container, false)
@@ -68,14 +54,6 @@ abstract class RootFragment : Fragment(), HttpCallBack {
             } else
                 onInvisible()
         }
-    }
-
-    open fun postUrl(url: String, params: HttpParams, callBack: CallBack<*>, showLoading: Boolean) {
-        val disposable = EasyHttp.post(url).params(params).execute(callBack)
-        if (showLoading)
-            httpPool.add(disposable)
-        else
-            backgroundHttpPool.add(disposable)
     }
 
     override fun onBegin(showLoading: Boolean,url: String) {

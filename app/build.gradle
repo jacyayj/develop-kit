@@ -18,8 +18,8 @@ android {
         enabled = true
     }
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -27,20 +27,23 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    //noinspection GradleCompatible
+    //androidx
     api 'androidx.appcompat:appcompat:1.1.0'
-    //网络请求库
-    api 'com.zhouyou:rxeasyhttp:2.1.5'
+    //ktx引用
+    api "androidx.core:core-ktx:1.2.0"
+    //fragment ktx引用
+    api "androidx.fragment:fragment-ktx:1.2.4"
+
+    // 网络请求库
+    // api 'com.zhouyou:rxeasyhttp:2.1.5'
     //基础工具库
     api 'com.github.tamsiree.RxTool:RxKit:2.4.3'
-    //recyclerview
-    api 'com.yanzhenjie.recyclerview:x:1.3.2'
     //Glide v4
     api 'com.github.bumptech.glide:glide:4.10.0'
     //下拉刷新
-    api  'com.scwang.smart:refresh-layout-kernel:2.0.0-alpha-1'      //核心必须依赖
-    api  'com.scwang.smart:refresh-header-classics:2.0.0-alpha-1'    //经典刷新头
-    api  'com.scwang.smart:refresh-footer-classics:2.0.0-alpha-1'    //经典加载
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.0-alpha-1'      //核心必须依赖
+    api 'com.scwang.smart:refresh-header-classics:2.0.0-alpha-1'    //经典刷新头
+    api 'com.scwang.smart:refresh-footer-classics:2.0.0-alpha-1'    //经典加载
     //androidx
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     //图片选择库
@@ -48,13 +51,46 @@ dependencies {
     //解决65535
     api 'androidx.multidex:multidex:2.0.1'
     //MaterialDesign设计库
-    api 'com.google.android.material:material:1.2.0-alpha05'
+    api 'com.google.android.material:material:1.2.0-alpha06'
     //常用ui组件
     api 'com.yhy.widget:view-core:1.4.1'
     //loading弹窗
     api 'com.wang.avi:library:2.1.3'
-    api 'android.arch.lifecycle:extensions:1.1.1'
-    api 'android.arch.lifecycle:viewmodel:1.1.1'
-    api 'android.arch.lifecycle:livedata:1.1.1'
+
+    //lifecycle引用
+    def lifecycle_version = "2.2.0"
+    def arch_version = "2.1.0"
+    // ViewModel
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Lifecycle
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    //java8
+    api "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    //room引用
+    def room_version = "2.2.5"
+    api "androidx.room:room-runtime:$room_version"
+    //注解支持
+    kapt "androidx.room:room-compiler:$room_version"
+    //kotlin 扩展
+    api "androidx.room:room-ktx:$room_version"
+
+    def work_version = "2.3.4"
+    // Kotlin + coroutines
+    api "androidx.work:work-runtime-ktx:$work_version"
+
+    def paging_version = "2.1.2"
+    api "androidx.paging:paging-runtime-ktx:$paging_version"
+    //RxJava Kotlin 扩展支持
+    api "androidx.paging:paging-rxjava2-ktx:$paging_version"
+
+    // dataBinding注解
     kapt 'com.android.databinding:compiler:3.2.0-alpha10'
+
+    //网络请求
+    api 'com.ljx.rxhttp:rxhttp:2.2.0'
+    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.2.0' //生成RxHttp类
+    api 'com.ljx.rxlife:rxlife-coroutine:2.0.0'  //管理协程生命周期，页面销毁，关闭请求
 }

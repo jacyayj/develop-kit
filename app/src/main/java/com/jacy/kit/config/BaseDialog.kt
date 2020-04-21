@@ -24,6 +24,7 @@ open class BaseDialog(
     }
 
     private fun initDialog() {
+
         val p = window?.attributes // 获取对话框当前的参数值
         if (with != -1f)
             p?.width = (RxDeviceTool.getScreenWidth(context) * with).toInt()// 宽度设置为屏幕的占比
