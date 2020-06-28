@@ -9,14 +9,13 @@ import android.os.Build
 import android.provider.Settings
 import androidx.core.app.ActivityCompat.startActivityForResult
 import com.jacy.kit.config.Action.INSTALL_APK
-import com.jacy.kit.config.toast
-import com.jacy.kit.utils.log
-import com.tamsiree.rxtool.RxActivityTool
-import com.tamsiree.rxtool.RxAppTool
+import com.jacy.kit.utils.currentActivity
+import com.jacy.kit.utils.installApk
+import com.jacy.kit.utils.mlog
+import com.jacy.kit.utils.toast
 
 class DownLoadReceiver :
     BroadcastReceiver() {
-
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == DownloadManager.ACTION_DOWNLOAD_COMPLETE) {
@@ -40,15 +39,14 @@ class DownLoadReceiver :
                         if (status == DownloadManager.STATUS_SUCCESSFUL) {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                                 if (context.packageManager.canRequestPackageInstalls())
-                                    RxAppTool.installApp(
-                                        RxActivityTool.currentActivity(),
+                                    context.installApk(
                                         filename,
                                         0x01
                                     )
                                 else {
                                     toast("安装APK需打开相应权限，请前往开启")
                                     startActivityForResult(
-                                        RxActivityTool.currentActivity(),
+                                        currentActivity(),
                                         Intent(
                                             Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
                                             Uri.parse("package:${context.packageName}")
@@ -56,8 +54,7 @@ class DownLoadReceiver :
                                     )
                                 }
                             } else {
-                                RxAppTool.installApp(
-                                    RxActivityTool.currentActivity(),
+                                context.installApk(
                                     filename,
                                     0x01
                                 )
@@ -67,7 +64,7 @@ class DownLoadReceiver :
                 } catch (e: Exception) {
                     toast("安装异常")
                     e.printStackTrace()
-                    log.v(e.message)
+                    mlog.v(e.message)
                     return
                 } finally {
                     it.close()

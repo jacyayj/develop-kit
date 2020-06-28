@@ -1,24 +1,17 @@
 package com.jacy.kit.config
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.jacy.kit.net.HttpCallBack
-import com.jacy.kit.weight.LoadingDialog
+import com.jacy.kit.utils.getLayoutId
 
-abstract class RootFragment : Fragment(), HttpCallBack {
+abstract class RootFragment : Fragment(),RootView{
 
     private var isPrepare = false
     private var isFirst = true
 
-    private var httpCount = 0
-
-    private val loadingDialog by lazy {
-        initLoading()
-    }
 
     open fun getLayoutView(inflater: LayoutInflater, container: ViewGroup?): View =
         inflater.inflate(getLayoutId(), container, false)
@@ -56,34 +49,7 @@ abstract class RootFragment : Fragment(), HttpCallBack {
         }
     }
 
-    override fun onBegin(showLoading: Boolean,url: String) {
-        if (showLoading) {
-            if (httpCount == 0)
-                loadingDialog.show()
-            httpCount++
-        }
-    }
-
-    override fun onFinish(url: String) {
-        if (httpCount > 0) {
-            httpCount--
-            if (httpCount == 0)
-                loadingDialog.dismiss()
-        }
-    }
-
-    open fun initLoading(): Dialog {
-        return LoadingDialog(context!!)
-    }
-
-
-    open fun initData() {
-    }
-
-    open fun initListener() {}
     open fun notifyDateSetChanged(type: Int) {}
     open fun onVisible() {}
     open fun onInvisible() {}
-    open fun onBackPressed() {}
-
 }

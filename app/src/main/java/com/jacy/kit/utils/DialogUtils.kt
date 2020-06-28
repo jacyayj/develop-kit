@@ -2,8 +2,6 @@ package com.jacy.kit.utils
 
 import android.view.Gravity
 import android.view.Window
-import com.tamsiree.rxtool.RxDeviceTool
-import com.tamsiree.rxtool.RxTool
 
 /**
  * project:SRC
@@ -15,15 +13,15 @@ import com.tamsiree.rxtool.RxTool
 object DialogUtils {
 
     fun initDialogWidth(window: Window, widthScale: Float) {
-        val width = RxDeviceTool.getScreenWidth(RxTool.getContext())
+        val width = application.getScreenWidth()
         val p = window.attributes // 获取对话框当前的参数值
         p.width = (width * widthScale).toInt() // 宽度设置为屏幕的占比
         window.attributes = p
     }
 
     fun initDialogWidthAndHeight(window: Window, widthScale: Float, heightScale: Float) {
-        val width = RxDeviceTool.getScreenWidth(RxTool.getContext())
-        val height = RxDeviceTool.getScreenHeight(RxTool.getContext())
+        val width = application.getScreenWidth()
+        val height = application.getScreenHeight()
         val p = window.attributes // 获取对话框当前的参数值
         p.width = (width * widthScale).toInt() // 宽度设置为屏幕的占比
         p.height = (height * heightScale).toInt() // 高度设置为屏幕的占比
@@ -31,7 +29,7 @@ object DialogUtils {
     }
 
     fun setBottom(window: Window, scale: Float = 1f) {
-        val width = RxDeviceTool.getScreenWidth(RxTool.getContext())
+        val width = application.getScreenWidth()
         val p = window.attributes // 获取对话框当前的参数值
         p.width = (width * scale).toInt()// 宽度设置为屏幕的占比
         window.setGravity(Gravity.BOTTOM)
@@ -39,7 +37,7 @@ object DialogUtils {
     }
 
     fun setTop(window: Window, scale: Float = 1f) {
-        val width = RxDeviceTool.getScreenWidth(RxTool.getContext())
+        val width = application.getScreenHeight()
         val p = window.attributes // 获取对话框当前的参数值
         p.width = (width * scale).toInt()// 宽度设置为屏幕的占比
         window.setGravity(Gravity.TOP)
