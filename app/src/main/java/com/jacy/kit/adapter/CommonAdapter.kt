@@ -18,7 +18,6 @@ class CommonAdapter<T>(
     val function: (view: View, t: T, position: Int) -> Unit = { _, _, _ -> }
 ) : BaseAdapter() {
 
-
     fun refresh(data: MutableList<T>) {
         this.data = data
         notifyDataSetChanged()

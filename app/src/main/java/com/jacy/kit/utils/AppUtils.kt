@@ -13,6 +13,7 @@ import android.os.Build
 import android.os.Parcelable
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import com.google.gson.Gson
@@ -295,6 +296,14 @@ fun Context.installApk(filePath: String?, requestCode: Int) {
     intent.setDataAndType(contentUri, "application/vnd.android.package-archive")
     ActivityCompat.startActivityForResult(this as Activity, intent, requestCode, null)
 }
+
+/**
+ * 是否为深色模式
+ */
+fun isNightModel(): Boolean {
+    return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+}
+
 
 
 

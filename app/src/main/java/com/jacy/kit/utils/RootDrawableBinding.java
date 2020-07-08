@@ -1,5 +1,6 @@
 package com.jacy.kit.utils;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +12,11 @@ public class RootDrawableBinding {
     public static void displayResource(ImageView view, int resId) {
         if (resId != -1)
             view.setImageResource(resId);
+    }
+    @BindingAdapter({"background"})
+    public static void setBackground(View view, int resId) {
+        if (resId != -1)
+            view.setBackgroundResource(resId);
     }
 
     @BindingAdapter({"drawableTop"})

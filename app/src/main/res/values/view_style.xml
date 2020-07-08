@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="wrap_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="match_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="match_height_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="match_width_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="text_10" parent="wrap_layout">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="text_11" parent="wrap_layout">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="text_12" parent="wrap_layout">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="text_13" parent="wrap_layout">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="text_14" parent="wrap_layout">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="text_15" parent="wrap_layout">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="text_16" parent="wrap_layout">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="text_17" parent="wrap_layout">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="text_18" parent="wrap_layout">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text_19" parent="wrap_layout">
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="text_20" parent="wrap_layout">
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

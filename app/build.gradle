@@ -43,6 +43,8 @@ dependencies {
     //fragment ktx引用
     api "androidx.fragment:fragment-ktx:1.2.5"
 
+    api 'com.google.android:flexbox:2.0.1'
+
     //基础工具库
 //    api 'com.github.tamsiree.RxTool:RxKit:2.4.3'
     //Glide v4
@@ -97,8 +99,8 @@ dependencies {
     kapt 'com.android.databinding:compiler:3.2.0-alpha10'
 
     //网络请求
-    api 'com.ljx.rxhttp:rxhttp:2.2.7'
-    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.2.7' //生成RxHttp类
+    api 'com.ljx.rxhttp:rxhttp:2.2.8'
+    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.2.8' //生成RxHttp类
     api 'com.squareup.okhttp3:okhttp:4.7.2' //okhttp
 
     //rxjava3

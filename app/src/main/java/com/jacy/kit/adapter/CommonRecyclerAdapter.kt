@@ -45,6 +45,11 @@ class CommonRecyclerAdapter<T>(
 
     override fun getItemViewType(position: Int) = position
 
+    fun clear(){
+        data.clear()
+        notifyDataSetChanged()
+    }
+
     fun getItem(position: Int) = data[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = Holder(
