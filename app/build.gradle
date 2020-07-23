@@ -13,15 +13,6 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        rxhttp_okhttp: '4.7.2',
-                        rxhttp_rxjava: 'rxjava3'//可传入rxjava2、rxjava3
-                ]
-            }
-        }
     }
     dataBinding {
         enabled = true
@@ -33,13 +24,13 @@ android {
 }
 
 dependencies {
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta7'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta8'
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     //androidx
     api 'androidx.appcompat:appcompat:1.1.0'
     //ktx引用
-    api "androidx.core:core-ktx:1.3.0"
+    api "androidx.core:core-ktx:1.3.1"
     //fragment ktx引用
     api "androidx.fragment:fragment-ktx:1.2.5"
 
@@ -86,7 +77,7 @@ dependencies {
     //kotlin 扩展
     api "androidx.room:room-ktx:$room_version"
 
-    def work_version = "2.3.4"
+    def work_version = "2.4.0"
     // Kotlin + coroutines
     api "androidx.work:work-runtime-ktx:$work_version"
 
@@ -97,16 +88,6 @@ dependencies {
 
     // dataBinding注解
     kapt 'com.android.databinding:compiler:3.2.0-alpha10'
-
-    //网络请求
-    api 'com.ljx.rxhttp:rxhttp:2.2.8'
-    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.2.8' //生成RxHttp类
-    api 'com.squareup.okhttp3:okhttp:4.7.2' //okhttp
-
-    //rxjava3
-    api 'io.reactivex.rxjava3:rxjava:3.0.2'
-    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
-    api 'com.ljx.rxlife3:rxlife-rxjava:3.0.0' //管理RxJava3生命周期，页面销毁，关闭请求
 
     //沉浸式状态栏
     api 'com.gyf.immersionbar:immersionbar:3.0.0'
