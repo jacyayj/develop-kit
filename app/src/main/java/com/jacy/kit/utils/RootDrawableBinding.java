@@ -13,7 +13,7 @@ public class RootDrawableBinding {
         if (resId != -1)
             view.setImageResource(resId);
     }
-    @BindingAdapter({"background"})
+    @BindingAdapter({"mBackground"})
     public static void setBackground(View view, int resId) {
         if (resId != -1)
             view.setBackgroundResource(resId);
