@@ -13,6 +13,15 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        rxhttp_okhttp: '4.7.2',
+                        rxhttp_rxjava: 'rxjava3'//可传入rxjava2、rxjava3
+                ]
+            }
+        }
     }
     dataBinding {
         enabled = true
