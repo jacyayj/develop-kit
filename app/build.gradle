@@ -93,6 +93,16 @@ dependencies {
     // dataBinding注解
     kapt 'com.android.databinding:compiler:3.2.0-alpha10'
 
+    //网络请求
+    api 'com.ljx.rxhttp:rxhttp:2.2.8'
+    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.2.8' //生成RxHttp类
+    api 'com.squareup.okhttp3:okhttp:4.7.2' //okhttp
+
+    //rxjava3
+    api 'io.reactivex.rxjava3:rxjava:3.0.2'
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api 'com.ljx.rxlife3:rxlife-rxjava:3.0.0' //管理RxJava3生命周期，页面销毁，关闭请求
+
     //沉浸式状态栏
     api 'com.gyf.immersionbar:immersionbar:3.0.0'
     //kotlin扩展（可选）
