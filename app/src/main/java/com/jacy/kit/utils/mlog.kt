@@ -1,5 +1,6 @@
 package com.jacy.kit.utils
 
+import android.util.Log
 import com.google.gson.GsonBuilder
 import com.orhanobut.logger.Logger
 
@@ -10,7 +11,7 @@ object mlog {
     private val gson by lazy { GsonBuilder().setPrettyPrinting().create() }
 
     fun v(msg: String?) {
-        Logger.v(msg ?: "msg is null")
+        Log.v(TAG, msg ?: "msg is null")
     }
 
     fun json(msg: Any?) {
